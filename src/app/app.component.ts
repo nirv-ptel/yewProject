@@ -6,7 +6,8 @@ import { MainServiceService } from './@service/main-service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  preserveWhitespaces: true
 })
 export class AppComponent implements OnInit {
 
@@ -43,7 +44,7 @@ export class AppComponent implements OnInit {
     );
     this._service.rowId = data.RowId;
   }
-  
+
   delete(id: number) {
     const shouldDelete = window.confirm('Are you sure you want to delete the data?');
     if (shouldDelete) {
