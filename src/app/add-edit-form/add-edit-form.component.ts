@@ -52,7 +52,6 @@ export class AddEditFormComponent implements OnInit {
         this.addEditForm.get('Code')?.setValue(data.Table[0].Code);
         this.addEditForm.get('Name')?.setValue(data.Table[0].Name);
         this.addEditForm.get('Address')?.setValue(data.Table[0].Address);
-
         this.addEditForm.get('Country')?.setValue(data.Table[0].Country);
         this.addEditForm.get('State')?.setValue(data.Table[0].State);
         this.addEditForm.get('City')?.setValue(data.Table[0].City);
@@ -64,8 +63,7 @@ export class AddEditFormComponent implements OnInit {
         this.addEditForm.get('Latitude')?.setValue(data.Table[0].Latitude);
         this.addEditForm.get('Longitude')?.setValue(data.Table[0].Longitude);
 
-        let a = data.Table1.length;
-        for(let i = 0; i < a; i++) {
+        for(let i = 0; i < data.Table1.length; i++) {
           this.addContactPerson(data.Table1[i]);
         }
       })
@@ -84,26 +82,21 @@ export class AddEditFormComponent implements OnInit {
       Designation: [data?.Designation, Validators.required],
     })
   }
+
   get contactPerson(): FormArray {
     return <FormArray>this.addEditForm.get('ContactPersonDetails');
   }
+
   addContactPerson(data: any) {
     this.contactPerson.push(this.createContactPerson(data));
   }
+
   remove(index: number) {
     this.contactPerson.removeAt(index);
   }
 
-  // save() {
-  //   this.isSubmitClicked = true;
-  //   setTimeout(() => {
-  //     this.isSubmitClicked = false;
-  //   }, 3000); 
-  // }
-
   mobileNumberValidator(): ValidatorFn {
     const pattern = /^\d{10}$/;
-  
     return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
       if (!pattern.test(value)) {
@@ -116,7 +109,6 @@ export class AddEditFormComponent implements OnInit {
   onSubmit() {
     this.isSubmitClicked = true
     if(this.addEditForm.valid) {
-      console.warn(this.addEditForm.valid, this.addEditForm.value);
       this._service.saveData(this.addEditForm.value).subscribe((data: any) => {
         this.activeModal.close('Close click');
       })

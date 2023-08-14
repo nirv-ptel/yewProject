@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this._service.Getdata().subscribe((data: any) => {
       this.BillData = data.Table;
+      this.BillData.sort((a, b) => b.RowId - a.RowId);
     })
   }
 
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
     );
     this._service.rowId = clickedData;
   }
+
   edit(data: any) {
     const modalRef = this.modalService.open(AddEditFormComponent, { fullscreen: true, scrollable: true });
     modalRef.result.then(
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit {
     );
     this._service.rowId = data.RowId;
   }
+  
   delete(id: number) {
     const shouldDelete = window.confirm('Are you sure you want to delete the data?');
     if (shouldDelete) {
