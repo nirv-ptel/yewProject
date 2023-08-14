@@ -8,5 +8,5 @@ npm: 9.8.1
 Angular: 16.1.0
 
 ## Development server
-first of 'npm install' command run
+first of 'npm install' command run <br>
 then 'ng s' for run this project
