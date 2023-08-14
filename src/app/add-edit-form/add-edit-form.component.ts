@@ -55,7 +55,7 @@ export class AddEditFormComponent implements OnInit {
         this.addEditForm.get('Country')?.setValue(data.Table[0].Country);
         this.addEditForm.get('State')?.setValue(data.Table[0].State);
         this.addEditForm.get('City')?.setValue(data.Table[0].City);
-        this.addEditForm.get('Mobile')?.setValue(data.Table[0].Mobile);
+        this.addEditForm.get('Mobile')?.setValue(data.Table[0].Phone);
         this.addEditForm.get('Email')?.setValue(data.Table[0].Email);
         this.addEditForm.get('GSTNo')?.setValue(data.Table[0].GSTNo);
         this.addEditForm.get('PANNo')?.setValue(data.Table[0].PANNo);
